@@ -94,22 +94,6 @@ public class FijkPlugin implements MethodCallHandler, FlutterPlugin, ActivityAwa
     private Object mAudioFocusRequest;
     private boolean mAudioFocusRequested = false;
 
-
-    /**
-     * Plugin registration.
-     */
-    @SuppressWarnings("unused")
-    public static void registerWith(@NonNull FlutterPluginBinding binding) {
-        final MethodChannel channel = new MethodChannel(binding.getBinaryMessenger(), "befovy.com/fijk");
-        FijkPlugin plugin = new FijkPlugin();
-        plugin.initWithBinding(binding);
-        channel.setMethodCallHandler(plugin);
-
-        final FijkPlayer player = new FijkPlayer(plugin, true);
-        player.setupSurface();
-        player.release();
-    }
-
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         final MethodChannel channel = new MethodChannel(binding.getBinaryMessenger(), "befovy.com/fijk");
